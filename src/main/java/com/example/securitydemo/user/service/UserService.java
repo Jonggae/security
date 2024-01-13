@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -23,6 +24,7 @@ public class UserService {
         checkUsername(username);
         checkEmail(email);
     }
+
     public void checkUsername(String username) {
         if (userRepository.findByUsername(username).isPresent()) {
             throw new IllegalArgumentException("이미 사용중인 아이디입니다");
@@ -30,7 +32,7 @@ public class UserService {
     }
 
     public void checkEmail(String email) {
-        if (userRepository.findByEmail(email).isPresent()){
+        if (userRepository.findByEmail(email).isPresent()) {
             throw new IllegalArgumentException("이미 사용중인 이메일입니다");
         }
     }
