@@ -15,8 +15,8 @@ public class UserService {
 
     public void register(RegisterRequestDto requestDto) {
         checkUserinfo(requestDto.getUsername(), requestDto.getEmail());
-        RegisterRequestDto encodeDto = requestDto.encodePassword(passwordEncoder);
-        userRepository.save(encodeDto.toEntity());
+        RegisterRequestDto encodedDto = requestDto.encodePassword();
+        userRepository.save(encodedDto.toEntity());
 
     }
 
