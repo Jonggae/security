@@ -13,19 +13,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @AllArgsConstructor
 public class RegisterRequestDto {
 
-    private PasswordEncoder passwordEncoder;
-
     private String username;
     private String password;
     private String email;
+    private PasswordEncoder passwordEncoder;
 
-    /*
-    * @builder를 사용하기때문에 들어가는 setter*/
     public RegisterRequestDto encodePassword() {
         return RegisterRequestDto.builder()
                 .username(username)
                 .password(passwordEncoder.encode(password))
                 .email(email)
+                .passwordEncoder(passwordEncoder)
                 .build();
     }
 
@@ -35,5 +33,10 @@ public class RegisterRequestDto {
                 .password(password)
                 .email(email)
                 .build();
+    }
+
+    public RegisterRequestDto passwordEncoder(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder=passwordEncoder;
+        return this;
     }
 }
