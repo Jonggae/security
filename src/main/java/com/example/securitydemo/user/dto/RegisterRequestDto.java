@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Getter
 @Builder
@@ -18,16 +17,18 @@ public class RegisterRequestDto {
     private String email;
 
 
-    public User toEntity(PasswordEncoder passwordEncoder) {
+    public User toEntity() {
         return User.builder()
                 .username(username)
-                .password(encodePassword(passwordEncoder))
+                .password(password)
                 .email(email)
                 .build();
     }
 
-    private String encodePassword(PasswordEncoder passwordEncoder) {
-        return passwordEncoder.encode(password);
+    public void setPassword(String password) {
+        this.password = password;
+
     }
+
 
 }

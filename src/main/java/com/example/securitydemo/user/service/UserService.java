@@ -15,7 +15,9 @@ public class UserService {
 
     public void register(RegisterRequestDto requestDto) {
         checkUserinfo(requestDto.getUsername(), requestDto.getEmail());
-        userRepository.save(requestDto.toEntity(passwordEncoder));
+        String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
+        requestDto.setPassword(encodedPassword);
+        userRepository.save(requestDto.toEntity());
     }
 
     public void checkUserinfo(String username, String email) {
