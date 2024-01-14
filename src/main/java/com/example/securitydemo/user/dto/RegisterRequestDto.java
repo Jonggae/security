@@ -16,16 +16,11 @@ public class RegisterRequestDto {
     private String username;
     private String password;
     private String email;
-    private PasswordEncoder passwordEncoder;
 
-    public RegisterRequestDto encodePassword() {
-        return RegisterRequestDto.builder()
-                .username(username)
-                .password(passwordEncoder.encode(password))
-                .email(email)
-                .passwordEncoder(passwordEncoder)
-                .build();
-    }
+
+   public void setPassword(String password) {
+       this.password = password;
+   }
 
     public User toEntity() {
         return User.builder()
@@ -35,8 +30,4 @@ public class RegisterRequestDto {
                 .build();
     }
 
-    public RegisterRequestDto passwordEncoder(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder=passwordEncoder;
-        return this;
-    }
 }

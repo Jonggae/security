@@ -14,9 +14,11 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public void register(RegisterRequestDto requestDto) {
+        String password = passwordEncoder.encode(requestDto.getPassword());
         checkUserinfo(requestDto.getUsername(), requestDto.getEmail());
-        RegisterRequestDto encodedDto = requestDto.encodePassword();
-        userRepository.save(encodedDto.toEntity());
+        requestDto.setPassword(password);
+        userRepository.save(requestDto.toEntity());
+
 
     }
 
