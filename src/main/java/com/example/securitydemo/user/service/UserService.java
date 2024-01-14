@@ -14,12 +14,8 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public void register(RegisterRequestDto requestDto) {
-        String password = passwordEncoder.encode(requestDto.getPassword());
         checkUserinfo(requestDto.getUsername(), requestDto.getEmail());
-        requestDto.setPassword(password);
-        userRepository.save(requestDto.toEntity());
-
-
+        userRepository.save(requestDto.toEntity(passwordEncoder));
     }
 
     public void checkUserinfo(String username, String email) {

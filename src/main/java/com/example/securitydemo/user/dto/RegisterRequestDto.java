@@ -18,16 +18,16 @@ public class RegisterRequestDto {
     private String email;
 
 
-   public void setPassword(String password) {
-       this.password = password;
-   }
-
-    public User toEntity() {
+    public User toEntity(PasswordEncoder passwordEncoder) {
         return User.builder()
                 .username(username)
-                .password(password)
+                .password(encodePassword(passwordEncoder))
                 .email(email)
                 .build();
+    }
+
+    private String encodePassword(PasswordEncoder passwordEncoder) {
+        return passwordEncoder.encode(password);
     }
 
 }
