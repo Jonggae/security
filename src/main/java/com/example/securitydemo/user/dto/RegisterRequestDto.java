@@ -16,6 +16,13 @@ public class RegisterRequestDto {
     private String password;
     private String email;
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public User toEntity() {
         return User.builder()
