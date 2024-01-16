@@ -1,10 +1,21 @@
 ### 회원가입
-POST localhost:8080/api/users/register
+POST localhost:8080/register
 content-type: application/json
 
 {
-"username" : "CJW1",
-"password" : "password",
-"email" : "CJW1@mail.com"
+"username" : "CJW",
+"password" : "1234",
+"email" : "CJW@mail.com"
 }
 
+### 로그인
+POST localhost:8080/login
+content-type: application/json
+
+{
+  "username" : "CJW",
+  "password" : "1234"
+}
+
+### 홈페이지
+GET localhost:8080/home
