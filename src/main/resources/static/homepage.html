@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #welcomeMessage {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="button" onclick="login()">Login</button>
+    <button type="button" onclick="redirectToRegister()">Register</button>
+</form>
+
+<div id="welcomeMessage">
+    <p id="greetingText">Guest</p>
+</div>
+
+<script>
+    // Simulated user data
+    var loggedInUser = null;
+
+    function redirectToRegister() {
+        window.location.href = "register.html";
+    }
+
+    // Simulate login
+    function login() {
+        var usernameInput = document.getElementById("username");
+        var passwordInput = document.getElementById("password");
+
+        // Simulated server check
+        if (usernameInput.value === "user" && passwordInput.value === "password") {
+            loggedInUser = { username: usernameInput.value };
+            updateUI();
+        } else {
+            alert("Invalid username or password");
+        }
+    }
+
+    // Check login status and update the UI
+    function updateUI() {
+        var loginForm = document.getElementById("loginForm");
+        var welcomeMessage = document.getElementById("welcomeMessage");
+        var greetingText = document.getElementById("greetingText");
+
+        if (loggedInUser) {
+            // User is logged in
+            loginForm.style.display = "none";
+            welcomeMessage.style.display = "block";
+            greetingText.innerText = "Welcome, " + loggedInUser.username + "!";
+        } else {
+            // User is not logged in
+            loginForm.style.display = "block";
+            welcomeMessage.style.display = "none";
+        }
+    }
+
+    // Initial call to set the UI based on the current login status
+    updateUI();
+</script>
+</body>
+</html>
