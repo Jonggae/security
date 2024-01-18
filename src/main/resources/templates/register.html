@@ -50,7 +50,7 @@
     </style>
 </head>
 <body>
-<form>
+<form id="registerForm">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required>
 
@@ -60,7 +60,29 @@
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
 
-    <button type="submit">회원가입</button>
+    <button type="button" onclick="submitForm()">회원가입</button>
 </form>
+<script>
+    function submitForm() {
+        var formData = {
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value,
+            email: document.getElementById('email').value
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/register', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(formData));
+
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                alert('회원가입 성공!');
+            } else {
+                alert('회원가입 실패!');
+            }
+        };
+    }
+</script>
 </body>
 </html>
