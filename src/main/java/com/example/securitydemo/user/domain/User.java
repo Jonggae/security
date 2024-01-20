@@ -1,5 +1,6 @@
 package com.example.securitydemo.user.domain;
 
+import com.example.securitydemo.user.role.UserRoleEnum;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +27,9 @@ public class User {
 
     @Column(name="email", nullable = false, unique = true)
     private String email;
+
+    @Enumerated(value = EnumType.STRING)
+    private UserRoleEnum role;
 
 
 }
