@@ -1,6 +1,6 @@
 package com.example.securitydemo.user.controller;
 
-import com.example.securitydemo.user.dto.RegisterRequestDto;
+import com.example.securitydemo.user.dto.UserDto;
 import com.example.securitydemo.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class UserController {
 //        return ResponseEntity.status(HttpStatus.CREATED).body("회원 가입 완료");
 //    }
     @PostMapping("/register")
-    public String register(@RequestBody RegisterRequestDto requestDto) {
+    public String register(@RequestBody UserDto requestDto) {
         userService.register(requestDto);
         return "redirect:/login";
     }
