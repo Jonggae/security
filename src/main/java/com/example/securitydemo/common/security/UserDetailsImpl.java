@@ -1,7 +1,6 @@
 package com.example.securitydemo.common.security;
 
 import com.example.securitydemo.user.domain.User;
-import com.example.securitydemo.user.role.UserRoleEnum;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -31,10 +30,11 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        UserRoleEnum role = user.getRole();
 
-        return null ;
+
+        return null;
     }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
