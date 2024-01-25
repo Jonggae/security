@@ -1,11 +1,12 @@
 package com.example.securitydemo.user.dto;
 
 import com.example.securitydemo.user.domain.User;
-import com.example.securitydemo.user.role.UserRoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Getter
 @Builder
@@ -17,8 +18,10 @@ public class RegisterRequestDto {
     private String password;
     private String email;
 
-    @Builder.Default
-    private UserRoleEnum role = UserRoleEnum.USER;
+//    @Builder.Default
+//    private UserRoleEnum role = UserRoleEnum.USER;
+
+    private Set<AuthorityDto> authorityDtoSet;
 
 
     public User toEntity() {
@@ -26,7 +29,6 @@ public class RegisterRequestDto {
                 .username(username)
                 .password(password)
                 .email(email)
-                .role(role)
                 .build();
     }
 
