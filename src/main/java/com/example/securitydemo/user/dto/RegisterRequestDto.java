@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @Getter
 @Builder
 @NoArgsConstructor
@@ -15,6 +17,11 @@ public class RegisterRequestDto {
     private String username;
     private String password;
     private String email;
+
+//    @Builder.Default
+//    private UserRoleEnum role = UserRoleEnum.USER;
+
+    private Set<AuthorityDto> authorityDtoSet;
 
 
     public User toEntity() {
