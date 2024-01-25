@@ -55,8 +55,10 @@ public class SecurityConfig {
         http.authorizeHttpRequests((authorizeHttpRequest ->
                 authorizeHttpRequest
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용 설정
-                        .requestMatchers("/login").permitAll()
-                        .requestMatchers("/**").permitAll()
+                        .requestMatchers("/api/authenticate","/api/register").permitAll()
+                        .requestMatchers(PathRequest.toH2Console()).permitAll()
+
+//                        .requestMatchers("/api/private").permitAll()
                         .anyRequest().authenticated())
         );
 
