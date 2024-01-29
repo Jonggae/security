@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 
 import java.util.Set;
 
+/*
+* UserDto 의 사용으로 회원가입 시 필요한 RegisterDto 는 사용되지 않음
+* TODO: 삭제 예정
+*/
+
 @Getter
 @Builder
 @NoArgsConstructor
@@ -36,6 +41,5 @@ public class RegisterRequestDto {
         this.password = password;
 
     }
-
 
 }

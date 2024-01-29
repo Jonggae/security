@@ -38,7 +38,8 @@ public class TokenProvider implements InitializingBean {
         this.secret = secret;
         this.tokenExpirationTime = tokenExpirationTime * 1000;
     }
-
+    // bean의 라이프사이클 (생성과정)을 설명할 수 있도록...
+    //컴포넌트 초기화
     @Override
     public void afterPropertiesSet() {
         byte[] keyBytes = Decoders.BASE64.decode(secret);

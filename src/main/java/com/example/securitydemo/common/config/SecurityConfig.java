@@ -57,13 +57,13 @@ public class SecurityConfig {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll() // resources 접근 허용 설정
                         .requestMatchers("/api/authenticate","/api/register").permitAll()
                         .requestMatchers(PathRequest.toH2Console()).permitAll()
-
 //                        .requestMatchers("/api/private").permitAll()
                         .anyRequest().authenticated())
         );
 
         http.sessionManagement(sessionManagement ->
                 sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
 
         http.with(new JwtSecurityConfig(tokenProvider), customizer -> {
         });
