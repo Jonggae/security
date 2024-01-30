@@ -53,6 +53,9 @@ public class ApiTestController {
      */
 
     /*로그인 로직 설명 시 내용 추가*/
+    /*
+    * 로그인 (authenticate)과정
+    * */
     @PostMapping("/authenticate")
     public ResponseEntity<TokenDto> authorize(@Valid @RequestBody LoginRequestDto loginRequestDto) {
         UsernamePasswordAuthenticationToken authenticationToken =

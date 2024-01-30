@@ -1,5 +1,7 @@
 package com.example.securitydemo.common.exception;
-
+/*
+* 예외처리
+*/
 public class DuplicateMemberException extends RuntimeException {
     public DuplicateMemberException() {
         super();

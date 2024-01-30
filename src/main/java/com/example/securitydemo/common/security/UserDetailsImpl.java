@@ -6,6 +6,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+/*
+* 사용자의 세부 정보를 저장하는 클래스. UserDetails 클래스 구현체로 사용한다.
+* 클래스 명은 보통 CustomUserDetails 로 하는 듯;;
+* */
+
 public class UserDetailsImpl implements UserDetails {
 
     private final User user;

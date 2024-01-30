@@ -1,5 +1,8 @@
 package com.example.securitydemo.common.exception;
 
+/*
+* 예외처리
+*/
 public class NotFoundMemberException extends RuntimeException {
     public NotFoundMemberException() {
         super();
