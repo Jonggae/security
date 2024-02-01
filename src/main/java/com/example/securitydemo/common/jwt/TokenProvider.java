@@ -45,7 +45,7 @@ public class TokenProvider implements InitializingBean {
     }
     /*
     * tokenProvider 빈이 초기화 될때, 설정된 secret 값을 디코딩하여
-    * 해당 값음 JWT 서명에 사용할 수 있도록 디코딩한다.
+    * 해당 값을 JWT 서명에 사용할 수 있도록 디코딩한다.
     * HMAC-SHA (Hash-based Message Authentication Code with Secure Hash Algorithm)
     * 빈이 사용될 때 설정하는 역할
     */
